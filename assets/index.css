@@ -1,0 +1,423 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+}
+
+@font-face {
+    font-family: PoppinsHeading;
+    src: url(fonts/poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+    font-family: PoppinsRegular;
+    src: url(fonts/poppins/Poppins-Regular.ttf);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: PoppinsRegular;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.top-left {
+    border-top-left-radius: 50px;
+}
+
+.top-right {
+    border-top-right-radius: 50px;
+}
+
+.bottom-left {
+    border-bottom-left-radius: 50px;
+}
+
+.bottom-right {
+    border-bottom-right-radius: 50px;
+}
+
+#settings {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 30px;
+    border-radius: 30px;
+    width: 400px;
+}
+
+.control-group {
+    margin: 30px 0px;
+}
+
+.label {
+    margin-bottom: 10px;
+}
+
+.switcher {
+    display: flex;
+    border-radius: 30px;
+    position: relative;
+}
+
+.control {
+    padding: 10px 0px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.control.last-control {
+    border-bottom-left-radius: unset;
+    border-top-left-radius: unset;
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+/* Modes */
+/* Neu light */
+body.neumorphism.light {
+    background-color: #e2e1da;
+}
+
+.neumorphism.light #settings,
+.neumorphism.light .tic-tac-area {
+    border-radius: 50px;
+    background: #e2e1da;
+    box-shadow: 20px 20px 60px #c0bfb9,
+        -20px -20px 60px #fffffb;
+}
+
+.neumorphism.light .cell.available {
+    background: linear-gradient(145deg, #f2f1e9, #cbcbc4);
+    box-shadow: 5px 5px 15px #c0bfb9,
+        -5px -5px 15px #fffffb;
+}
+
+.neumorphism.light .cell.available:hover {
+    background: #e2e1da;
+    box-shadow: 2px 2px 10px #c0bfb9,
+        -2px -2px 10px #fffffb;
+}
+
+.neumorphism.light .cell {
+    background: linear-gradient(145deg, #cbcbc4, #f2f1e9);
+    box-shadow: 5px 5px 5px #c0bfb9,
+        -5px -5px 5px #fffffb;
+}
+
+.neumorphism.light .label {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.neumorphism.light .control {
+    background: #e2e1da;
+    box-shadow: 5px 5px 15px #c0bfb9,
+        -5px -5px 15px #fffffb;
+}
+
+.neumorphism.light .control.active,
+.neumorphism.light .control.active:hover {
+    background: #e2e1da;
+    box-shadow: inset 5px 5px 15px #c0bfb9,
+        inset -5px -5px 15px #fffffb;
+}
+
+.neumorphism.light .control:active {
+    background: #e2e1da;
+    box-shadow: inset 10px 10px 20px #c0bfb9,
+        inset -10px -10px 20px #fffffb;
+}
+
+.neumorphism.light .control:hover {
+    background: linear-gradient(145deg, #cbcbc4, #f2f1e9);
+    box-shadow: 5px 5px 15px #c0bfb9,
+        -5px -5px 15px #fffffb;
+}
+
+.neumorphism.light .cell .my,
+.neumorphism.light .cell .system {
+    height: 40px;
+    width: 40px;
+}
+
+.neumorphism.light .cell .system {
+    color: #FF0000;
+}
+
+/* Neu dark */
+body.neumorphism.dark {
+    background-color: #3b3530;
+}
+
+.neumorphism.dark #settings,
+.neumorphism.dark .tic-tac-area {
+    border-radius: 50px;
+    background: #3b3530;
+    box-shadow: 20px 20px 60px #2d2925,
+        -20px -20px 60px #49413b;
+}
+
+.neumorphism.dark .cell.available {
+    background: linear-gradient(145deg, #3f3933, #35302b);
+    box-shadow: 5px 5px 15px #2d2925,
+        -5px -5px 15px #49413b;
+}
+
+.neumorphism.dark .cell.available:hover {
+    background: #3b3530;
+    box-shadow: 2px 2px 10px #2d2925,
+        -2px -2px 10px #49413b;
+}
+
+.neumorphism.dark .cell {
+    background: linear-gradient(145deg, #35302b, #3f3933);
+    ;
+    box-shadow: 5px 5px 5px #2d2925,
+        -5px -5px 5px #49413b;
+}
+
+.neumorphism.dark .label {
+    color: rgba(255, 255, 255, .5);
+}
+
+.neumorphism.dark .control {
+    background: #3b3530;
+    box-shadow: 5px 5px 15px #2d2925,
+        -5px -5px 15px #49413b;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.neumorphism.dark .control.active,
+.neumorphism.dark .control.active:hover {
+    background: #3b3530;
+    box-shadow: inset 5px 5px 15px #2d2925,
+        inset -5px -5px 15px #49413b;
+}
+
+.neumorphism.dark .control:active {
+    background: #3b3530;
+    box-shadow: inset 10px 10px 20px #2d2925,
+        inset -10px -10px 20px #49413b;
+}
+
+.neumorphism.dark .control:hover {
+    background: linear-gradient(145deg, #35302b, #3f3933);
+    box-shadow: 5px 5px 15px #2d2925,
+        -5px -5px 15px #49413b;
+}
+
+.neumorphism.dark .cell .my,
+.neumorphism.dark .cell .system {
+    height: 40px;
+    width: 40px;
+}
+
+.neumorphism.dark .cell .my {
+    color: #FFF;
+}
+
+.neumorphism.dark .cell .system {
+    color: #FF0000;
+}
+/* Glass light */
+body.glassmorphism.light {
+    background-image: url('media/bg.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.glassmorphism.light #settings {
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+.glassmorphism.light .cell {
+    margin: 10px;
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, .2);
+    background-color: rgba(255, 255, 255, .3);
+}
+.glassmorphism.light .cell.available {
+    border: 1px solid rgba(255, 255, 255, .2);
+    background-color: rgba(255, 255, 255, .1);
+}
+
+.glassmorphism.light .cell.available:hover {
+    transform: rotate(90deg);
+}
+
+.glassmorphism.light .label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.glassmorphism.light .control {
+    border: 1px solid rgba(255, 255, 255, .4);
+    background-color: rgba(255, 255, 255, .1);
+    color: rgba(255, 255, 255, .5);
+}
+
+.glassmorphism.light .control.active,
+.glassmorphism.light .control.active:hover {
+    background-color: rgba(255, 255, 255, .3);
+    color: rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+}
+
+.glassmorphism.light .cell .my,
+.glassmorphism.light .cell .system {
+    height: 40px;
+    width: 40px;
+}
+.glassmorphism.light .cell .my {
+    color: #FFF;
+}
+.glassmorphism.light .cell .system {
+    color: #FF0000;
+}
+/* Glass dark */
+body.glassmorphism.dark {
+    background-image: url('media/bg.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.glassmorphism.dark #settings {
+    border-radius: 50px;
+    background-color: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+.glassmorphism.dark .cell {
+    margin: 10px;
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, .7);
+}
+.glassmorphism.dark .cell.available {
+    border: 1px solid rgba(255, 255, 255, .3);
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.glassmorphism.dark .cell.available:hover {
+    transform: rotate(90deg);
+}
+
+.glassmorphism.dark .label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.glassmorphism.dark .control {
+    background-color: rgba(0, 0, 0, .3);
+    color: rgba(255, 255, 255, .5);
+}
+
+.glassmorphism.dark .control.active,
+.glassmorphism.dark .control.active:hover {
+    border: 1px solid rgba(255, 255, 255, .3);
+    background-color: rgba(0, 0, 0, .5);
+    color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+}
+
+.glassmorphism.dark .cell .my,
+.glassmorphism.dark .cell .system {
+    height: 40px;
+    width: 40px;
+}
+.glassmorphism.dark .cell .my {
+    color: #FFF;
+}
+.glassmorphism.dark .cell .system {
+    color: #FF0000;
+}
+
+#author {
+    position: fixed;
+    bottom: 50px;
+    left: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+}
+#author img {
+    height: 75px;
+    width: 75px;
+    border-radius: 150px;
+    margin-right: 20px;
+}
+#author .desc {
+    font-size: 14px;
+}
+.neumorphism.light #author {
+    background: #e2e1da;
+    box-shadow: 20px 20px 60px #c0bfb9,
+        -20px -20px 60px #fffffb;
+}
+.neumorphism.light #author .desc {
+    color: rgba(0, 0, 0, .5);
+}
+.neumorphism.dark #author {
+    background: #3b3530;
+    box-shadow: 20px 20px 60px #2d2925,
+        -20px -20px 60px #49413b;
+}
+.neumorphism.dark #author .desc {
+    color: rgba(255, 255, 255, .3);
+}
+.neumorphism.dark #author .author {
+    color: rgba(255, 255, 255, .7);
+}
+.glassmorphism.light #author {
+    background-color: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, .2);
+}
+.glassmorphism.dark #author {
+    background-color: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+.glassmorphism.dark #author .desc, .glassmorphism.light #author .desc {
+    color: rgba(255, 255, 255, .3);
+}
+.glassmorphism.dark #author .author, .glassmorphism.light #author .author {
+    color: rgba(255, 255, 255, .7);
+}

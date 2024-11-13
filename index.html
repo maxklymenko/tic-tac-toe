@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-tac-toe by Max Kly</title>
+    <link rel="stylesheet" href="assets/index.css">
+</head>
+
+<body class="light neumorphism">
+    <div id="settings">
+        <div class="control-group">
+            <div class="label">Mode</div>
+            <div class="switcher">
+                <div class="control active" id="lightMode">Light</div>
+                <div class="control last-control" id="darkMode">Dark</div>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="label">Style</div>
+            <div class="switcher">
+                <div class="control active" id="neuMode">Neumorphism</div>
+                <div class="control last-control" id="glassMode">Glassmorphism</div>
+            </div>
+        </div>
+    </div>
+    <div class="tic-tac-area">
+        <div class="row">
+            <div class="cell available top-left" id="1"></div>
+            <div class="cell available" id="2"></div>
+            <div class="cell available top-right" id="3"></div>
+        </div>
+        <div class="row">
+            <div class="cell available" id="4"></div>
+            <div class="cell available" id="5"></div>
+            <div class="cell available" id="6"></div>
+        </div>
+        <div class="row">
+            <div class="cell available bottom-left" id="7"></div>
+            <div class="cell available" id="8"></div>
+            <div class="cell available bottom-right" id="9"></div>
+        </div>
+    </div>
+    <div id="author">
+        <img src="assets/media/max-kly.png" alt="Max Kly">
+        <div class="text">
+            <div class="desc">Designed by</div>
+            <div class="author">Max Kly</div>
+            <div class="desc">Junior JavaScript developer</div>
+        </div>
+    </div>
+    <script src="assets/index.js"></script>
+</body>
+
+</html>
