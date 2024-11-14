@@ -1,9 +1,14 @@
 // Settings
+const settingsToggle = document.getElementById('settingsToggle');
+const settings = document.getElementById('settings');
 const body = document.querySelector('body')
 const lightMode = document.getElementById('lightMode');
 const darkMode = document.getElementById('darkMode');
 const neuMode = document.getElementById('neuMode');
 const glassMode = document.getElementById('glassMode');
+settingsToggle.addEventListener('click', () => {
+    settings.style.display === 'block' ? settings.style.display = 'none' : settings.style.display = 'block';
+});
 lightMode.addEventListener('click', () => {
     lightMode.classList.add('active');
     darkMode.classList.remove('active');
@@ -39,9 +44,17 @@ allAvailable.forEach((myCell) => {
             if (allAvailable.length > 1) {
                 makeMove();
             }
+            else {
+                setTimeout(() => {
+                    reset();
+                }, 1000);
+            }
         }
     });
 });
+const restartBtn = document.getElementById('restartBtn');
+restartBtn.addEventListener('click', (reset));
+
 function makeMove() {
     let tryID = getRandomInt(1, 10);
     let selectedBySystem = document.getElementById(`${tryID}`);
@@ -60,4 +73,11 @@ function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+}
+function reset() {
+    const allCells = document.querySelectorAll('.cell');
+    allCells.forEach((cell) => {
+        cell.classList.add('available');
+        cell.innerHTML = '';
+    });
 }

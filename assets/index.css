@@ -60,6 +60,8 @@ body {
     padding: 30px;
     border-radius: 30px;
     width: 400px;
+    display: block;
+    z-index: 100;
 }
 
 .control-group {
@@ -99,6 +101,10 @@ body {
 /* Neu light */
 body.neumorphism.light {
     background-color: #e2e1da;
+}
+
+.tic-tac-area {
+    position: relative;
 }
 
 .neumorphism.light #settings,
@@ -171,6 +177,15 @@ body.neumorphism.dark {
     background-color: #3b3530;
 }
 
+.neumorphism.dark #settingsToggle {
+    background: #3b3530;
+    box-shadow: 10px 10px 20px #2d2925,
+        -10px -10px 20px #49413b;
+    border: 1px solid rgba(255, 255, 255, .1);
+}
+.neumorphism.dark #settingsToggle svg {
+    color: rgba(255, 255, 255, .4);
+}
 .neumorphism.dark #settings,
 .neumorphism.dark .tic-tac-area {
     border-radius: 50px;
@@ -241,7 +256,18 @@ body.neumorphism.dark {
 .neumorphism.dark .cell .system {
     color: #FF0000;
 }
+
 /* Glass light */
+.glassmorphism.light #settingsToggle {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, .2);
+    background-color: rgba(255, 255, 255, .1);
+}
+.glassmorphism.light #settingsToggle svg {
+    color: rgba(255, 255, 255, .4);
+}
 body.glassmorphism.light {
     background-image: url('media/bg.jpeg');
     background-size: cover;
@@ -256,6 +282,7 @@ body.glassmorphism.light {
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 255, 255, .2);
 }
+
 .glassmorphism.light .cell {
     margin: 10px;
     border-radius: 50px;
@@ -265,6 +292,7 @@ body.glassmorphism.light {
     border: 1px solid rgba(255, 255, 255, .2);
     background-color: rgba(255, 255, 255, .3);
 }
+
 .glassmorphism.light .cell.available {
     border: 1px solid rgba(255, 255, 255, .2);
     background-color: rgba(255, 255, 255, .1);
@@ -284,6 +312,16 @@ body.glassmorphism.light {
     color: rgba(255, 255, 255, .5);
 }
 
+.glassmorphism.light .button-area .control {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+
+.glassmorphism.light .button-area .control:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, .7);
+}
+
 .glassmorphism.light .control.active,
 .glassmorphism.light .control.active:hover {
     background-color: rgba(255, 255, 255, .3);
@@ -296,13 +334,26 @@ body.glassmorphism.light {
     height: 40px;
     width: 40px;
 }
+
 .glassmorphism.light .cell .my {
     color: #FFF;
 }
+
 .glassmorphism.light .cell .system {
     color: #FF0000;
 }
+
 /* Glass dark */
+.glassmorphism.dark #settingsToggle {
+    background-color: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+.glassmorphism.dark #settingsToggle svg {
+    color: rgba(255, 255, 255, .4);
+}
 body.glassmorphism.dark {
     background-image: url('media/bg.jpeg');
     background-size: cover;
@@ -317,6 +368,7 @@ body.glassmorphism.dark {
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 255, 255, .3);
 }
+
 .glassmorphism.dark .cell {
     margin: 10px;
     border-radius: 50px;
@@ -326,6 +378,7 @@ body.glassmorphism.dark {
     border: 1px solid rgba(0, 0, 0, 1);
     background-color: rgba(0, 0, 0, .7);
 }
+
 .glassmorphism.dark .cell.available {
     border: 1px solid rgba(255, 255, 255, .3);
     background-color: rgba(0, 0, 0, .5);
@@ -344,6 +397,15 @@ body.glassmorphism.dark {
     color: rgba(255, 255, 255, .5);
 }
 
+.glassmorphism.dark .button-area .control {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+
+.glassmorphism.dark .button-area .control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 .glassmorphism.dark .control.active,
 .glassmorphism.dark .control.active:hover {
     border: 1px solid rgba(255, 255, 255, .3);
@@ -357,50 +419,80 @@ body.glassmorphism.dark {
     height: 40px;
     width: 40px;
 }
+
 .glassmorphism.dark .cell .my {
     color: #FFF;
 }
+
 .glassmorphism.dark .cell .system {
     color: #FF0000;
 }
 
 #author {
     position: fixed;
-    bottom: 50px;
+    bottom: 20px;
     left: 20px;
     padding: 20px;
     display: flex;
     align-items: center;
     border-radius: 30px;
+    overflow: hidden;
+    text-decoration: none;
 }
+
+#author:hover .author-content {
+    margin-left: 0px;
+}
+
+#author:hover img {
+    margin-right: 10px;
+}
+
+#author .author {
+    color: rgba(0, 0, 0, 1);
+}
+
+.author-content {
+    display: flex;
+    align-items: center;
+    margin-left: -70px;
+}
+
 #author img {
-    height: 75px;
-    width: 75px;
+    height: 50px;
+    width: 50px;
     border-radius: 150px;
     margin-right: 20px;
 }
+
 #author .desc {
-    font-size: 14px;
+    font-size: 10px;
 }
+
 .neumorphism.light #author {
     background: #e2e1da;
     box-shadow: 20px 20px 60px #c0bfb9,
         -20px -20px 60px #fffffb;
 }
+
 .neumorphism.light #author .desc {
     color: rgba(0, 0, 0, .5);
 }
+
 .neumorphism.dark #author {
     background: #3b3530;
     box-shadow: 20px 20px 60px #2d2925,
         -20px -20px 60px #49413b;
 }
+
 .neumorphism.dark #author .desc {
     color: rgba(255, 255, 255, .3);
 }
+
 .neumorphism.dark #author .author {
     color: rgba(255, 255, 255, .7);
 }
+
 .glassmorphism.light #author {
     background-color: rgba(255, 255, 255, .1);
     backdrop-filter: blur(15px);
@@ -408,6 +500,7 @@ body.glassmorphism.dark {
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 255, 255, .2);
 }
+
 .glassmorphism.dark #author {
     background-color: rgba(0, 0, 0, .5);
     backdrop-filter: blur(15px);
@@ -415,9 +508,67 @@ body.glassmorphism.dark {
     box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
     border: 1px solid rgba(255, 255, 255, .3);
 }
-.glassmorphism.dark #author .desc, .glassmorphism.light #author .desc {
+
+.glassmorphism.dark #author .desc,
+.glassmorphism.light #author .desc {
     color: rgba(255, 255, 255, .3);
 }
-.glassmorphism.dark #author .author, .glassmorphism.light #author .author {
+
+.glassmorphism.dark #author .author,
+.glassmorphism.light #author .author {
     color: rgba(255, 255, 255, .7);
+}
+
+#settingsToggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #e2e1da;
+    box-shadow: 10px 10px 20px #c0bfb9, -10px -10px 20px #fffffb;
+    height: 50px;
+    width: 50px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#settingsToggle svg {
+    color: rgba(0, 0, 0, .4);
+}
+
+.button-area {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+
+.button-area .control {
+    border-radius: 40px;
+    margin: 20px;
+    width: fit-content;
+    padding: 20px 40px;
+}
+
+@media only screen and (max-width: 1350px) {
+    #settings {
+        display: none;
+        top: 100px;
+    }
+
+    #settingsToggle {
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    body {
+        height: 100%;
+    }
+
+    .tic-tac-area {
+        margin: 175px 10px;
+    }
 }
